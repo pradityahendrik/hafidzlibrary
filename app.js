@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 // Routes for WEB
 var indexRouter = require('./routes/web/index');
-var usersRouter = require('./routes/web/users');
 
 // Routes for API
 var indexApiRouter = require('./routes/api/index');
@@ -25,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // WEB
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // API
 app.use('/api', indexApiRouter);
