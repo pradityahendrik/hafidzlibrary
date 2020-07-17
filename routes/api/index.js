@@ -12,4 +12,9 @@ router.get('/test/:id', async (req, res, next) => {
   res.status(result.code).send(result.response);
 });
 
+router.get('/get-all', async (req, res, next) => {
+  const result = await method.getAll();
+  res.status(result.code).send(result.response);
+});
+
 module.exports = router;
