@@ -1,15 +1,11 @@
-// transformer.pendaftarExcel = function (data) {
-//     return {
-//         username: data.username,
-//         nama_lengkap: data.nama_lengkap,
-//         tanggal_lahir: data.tanggal_lahir,
-//         telp: data.telp,
-//         tagihan: data.id_tagihan,
-//         kode_poltekes: data.kode_poltekes,
-//         email: data.email,
-//         id_user: data.id_user,
-//         flag_lengkap: data.flag_lengkap
-//     };
-// };
+const transformer = {};
 
-// module.exports = transformer;
+transformer.test = function (data) {
+    return {
+        nama: data.name,
+        alamat: data.alamat ? data.alamat : '-',
+        kode: `${data.id}-apa`
+    };
+};
+
+module.exports = transformer;
