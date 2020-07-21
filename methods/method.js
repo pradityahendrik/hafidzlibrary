@@ -1,5 +1,6 @@
 const Result = require('../utils/helpers/result');
 const repository = require('../repositories/repository');
+const transformer = require('../transformers/transformers');
 
 exports.test = async (data) => {
     try {
@@ -13,7 +14,9 @@ exports.test = async (data) => {
 exports.getAll = async () => {
     try {
         const result = await repository.findAll();
-        return Result.response(200, 'Berhasil', result);
+        const rsss = result.map(transformer.test);
+        // const rsss = transformer.test(result);
+        return Result.response(200, 'Berhasil', rsss);
     } catch (err) {
         return Result.response(err.code, err.message);
     }
