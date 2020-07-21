@@ -5,4 +5,6 @@ exports.findAll = async () => {
     return result;
 };
 
+
+
 module.exports = exports;
