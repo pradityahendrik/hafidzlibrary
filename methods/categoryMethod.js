@@ -9,7 +9,6 @@ exports.getAll = async () => {
         result = result.map(transformer.categoryList);
         return Result.response(200, 'Berhasil', result);
     } catch (err) {
-        console.log(err)
         return Result.response(err.code, err.message);
     }
 };
