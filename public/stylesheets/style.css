@@ -1,8 +1,29 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+} */
 
 a {
   color: #00B7FF;
+}
+
+a:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+.bg-dark-purple {
+  background-color: #563D7C
+}
+
+.bg-purple {
+  background-color: #6F6FAC
+}
+
+.bg-pink {
+  background-color: #E38BB2
+}
+
+.text-pink {
+  color: #E38BB2
 }

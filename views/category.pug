@@ -4,9 +4,9 @@
             .col-md-3.py-2 
                 //- category
                 .card
-                    .card-header.text-center.bg-info.text-white Kategori
+                    .card-header.text-center.bg-pink.text-white Kategori
                     ul.list-group#listCategory
-                        span.spinner-border.spinner-border.text-info.mx-auto.my-5#listCategoryLoader
+                        span.spinner-border.spinner-border.text-pink.mx-auto.my-5#listCategoryLoader
             .col.md-9.py-2
                 //- search & filter
                 form
@@ -43,10 +43,11 @@
                 //- list
                 .row.row-cols-1.row-cols-md-4
                     .col.mb-4
-                        .card
-                            img.img-fluid.img-thumbnail.card-img-top(src="images/card-book.png", alt="")
-                            .card-body
-                                h5.card-title.text-center Wahana Bermain Anak Cerdas
+                        a(href="").text-dark
+                            .card
+                                img.img-fluid.img-thumbnail.card-img-top(src="images/card-book.png", alt="")
+                                .card-body
+                                    h5.card-title.text-center Wahana Bermain Anak Cerdas
                     .col.mb-4
                         .card
                             img.img-fluid.img-thumbnail.card-img-top(src="images/card-book2.jpg", alt="")
