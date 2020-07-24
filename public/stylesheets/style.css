@@ -24,6 +24,14 @@ a:hover {
   background-color: #E38BB2
 }
 
+.bg-cyan {
+  background-color: #17A2B8;
+}
+
+.bg-teal {
+  background-color: #20C997;
+}
+
 .text-pink {
   color: #E38BB2
 }
