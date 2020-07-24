@@ -1,81 +1,47 @@
-.bg-light.text-black
+.bg-light.text-black#category
     .container-fluid
         .row.py-2
             .col-md-3.py-2 
                 //- category
                 .card
-                    .card-header.text-center.bg-primary.text-white Kategori
-                    ul.list-group
-                        li.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center 
-                            | Mandira Dian Semestaas asdasdas
-                            span.badge.badge-primary.badge-pill 1
-                        li.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center 
-                            | Mandiri
-                            span.badge.badge-primary.badge-pill 12
-                        li.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center 
-                            | Mandire
-                            span.badge.badge-primary.badge-pill 22
-                        li.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center 
-                            | Mandiru
-                            span.badge.badge-primary.badge-pill 0
-                        li.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center 
-                            | Mandiro
-                            span.badge.badge-primary.badge-pill 222
+                    .card-header.text-center.bg-pink.text-white Kategori
+                    ul.list-group#listCategory
+                        span.spinner-border.spinner-border.text-pink.mx-auto.my-5#listCategoryLoader
             .col.md-9.py-2
                 //- search & filter
                 form
                 .row.py-2
-                    .col-md-2
+                    .col-md-3
                         .form-group
                             select.form-control
                                 option Filter
                                 option Unggulan
                                 option Obral 
-                    .col
-                    .col                    
+                    .col-md-6                   
                         .form-group
                             .input-group
                                 input.form-control(type="text", placeholder="Pencarian")
                                 .input-group-append
                                     button.btn.btn-outline-primary(type="button")
                                         i.fa.fa-search  
-                //- list
-                .row.row-cols-1.row-cols-md-4
-                    .col.mb-4
-                        .card
-                            img.img-fluid.img-thumbnail.card-img-top(src="images/card-book.png", alt="")
-                            .card-body
-                                h5.card-title.text-center Title
-                    .col.mb-4
-                        .card
-                            img.img-fluid.img-thumbnail.card-img-top(src="images/card-book2.jpg", alt="")
-                            .card-body
-                                h5.card-title.text-center Title
-                    .col.mb-4
-                        .card
-                            img.img-fluid.img-thumbnail.card-img-top(src="images/card-book.png", alt="")
-                            .card-body
-                                h5.card-title.text-center Title
-                    .col.mb-4
-                        .card
-                            img.img-fluid.img-thumbnail.card-img-top(src="images/card-book.png", alt="")
-                            .card-body
-                                h5.card-title.text-center Title
-                //- pagination
-                .row
-                    .col
-                        ul.pagination.justify-content-center
+                    .col-md-3
+                        ul.pagination.justify-content-end
                             li.page-item
-                                a.text-dark.page-link(href="")
+                                a.page-link(href="")
                                     span &laquo;
                                     span.sr-only Previous
                             li.page-item
-                                a.text-dark.page-link(href="") 1
+                                a.page-link(href="") 1
                             li.page-item
-                                a.text-dark.page-link(href="") 2
+                                a.page-link(href="") 2
                             li.page-item
-                                a.text-dark.page-link(href="") 3
+                                a.page-link(href="") 3
                             li.page-item
-                                a.text-dark.page-link(href="")
+                                a.page-link(href="")
                                     span &raquo;
                                     span.sr-only Next
+                //- list
+                .row.row-cols-1.row-cols-md-4.listPackage
+                        
+
+script(src='/javascripts/category.js')  

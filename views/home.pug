@@ -1,0 +1,18 @@
+#carouselExampleControls.carousel.slide(data-ride='carousel')
+    .carousel-inner
+        .carousel-item.active
+            //- image height = 450
+            img.d-block.w-100(src='images/carousel.jpg', alt='...')
+        .carousel-item
+            img.d-block.w-100(src='images/carousel2.jpg', alt='...')
+        .carousel-item
+            img.d-block.w-100(src='images/carousel3.png', alt='...')
+    a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+    a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
+
+
+script(src='/javascripts/home.js')  
