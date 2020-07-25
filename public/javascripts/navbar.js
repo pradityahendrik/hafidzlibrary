@@ -1,4 +1,12 @@
 $(document).ready(async function () {
+    $('a[href="#home"]').click(function () {
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 800);
+
+        return false;
+    });
+
     $('a[href="#category"]').click(function () {
         $('html, body').animate({
             scrollTop: $($.attr(this, 'href')).offset().top
@@ -7,7 +15,7 @@ $(document).ready(async function () {
         return false;
     });
 
-    $('a[href="#howToOrder"]').click(function () {
+    $('a[href="#shoppingInfo"]').click(function () {
         $('html, body').animate({
             scrollTop: $($.attr(this, 'href')).offset().top
         }, 800);
