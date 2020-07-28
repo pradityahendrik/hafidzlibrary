@@ -12,6 +12,7 @@ var indexRouter = require('./routes/web/index');
 var indexApiRouter = require('./routes/api/index');
 var categoryApiRouter = require('./routes/api/categoryApi');
 var packageApiRouter = require('./routes/api/packageApi');
+var sliderApiRouter = require('./routes/api/sliderApi');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/api', indexApiRouter);
 app.use('/api/category', categoryApiRouter);
 app.use('/api/package', packageApiRouter);
+app.use('/api/slider', sliderApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
