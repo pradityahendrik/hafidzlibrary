@@ -11,9 +11,10 @@ exports.findAll = async () => {
 
 exports.findById = async (data) => {
     const result = await 
-        knex.select('*')
-            .from('Package')
-            .where('Id', data)
+        knex.select('P.*', 'C.Name as CategoryName')
+            .from('Package as P')
+            .join('Category as C', 'P.CategoryId', 'C.Id')
+            .where('P.Id', data)
             .first();
     return result;
 }

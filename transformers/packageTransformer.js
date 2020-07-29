@@ -10,13 +10,14 @@ transformer.packageDetail = function (package, picture, tag) {
         isSale: package.IsSale,
         salePrice: package.SalePrice,
         categoryId: package.CategoryId,
+        categoryName: package.CategoryName,
         createdTime: package.CreatedTime,
         createdBy: package.CreatedBy,
         updatedTime: package.UpdatedTime,
         upeatedBy: package.UpdatedBy,
-        picture,
-        tag
-    };
+        tag,
+        picture
+    }; 
 };
 
 module.exports = transformer;
