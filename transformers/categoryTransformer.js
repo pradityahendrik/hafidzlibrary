@@ -12,5 +12,19 @@ transformer.categoryList = function (data) {
     };
 };
 
+transformer.add = function (data, user) {
+    return {
+        Name: data.name,
+        CreatedBy: user
+    }
+};
+
+transformer.update = function (data, user) {
+    return {
+        Name: data.name,
+        UpdatedBy: user,
+        UpdatedTime: new Date()
+    }
+}
 
 module.exports = transformer;
