@@ -39,3 +39,5 @@ exports.getUser = async (data) => {
         return Result.response(error.code, error.message)
     }
 };
+
+module.exports = exports;
