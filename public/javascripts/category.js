@@ -133,7 +133,7 @@ const fetchPackageList = async query => {
                 <div class='card border-danger'>
                     <div class='card-body text-center'>
                         <h1 class='mb-3'><i class='fa fa-times'></i></h1>
-                        <h5>Tidak ada data</h5>
+                        <h5>Data tidak ditemukan</h5>
                     </div>
                 </div>
             </div>
