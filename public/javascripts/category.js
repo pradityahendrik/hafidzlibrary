@@ -1,10 +1,18 @@
 $(document).ready(async function () {
+    let query = {
+        "page": 1,
+        "limit": 8,
+        "search": "",
+        "filter": "",
+        "category": ""
+    }
+
     try {
         const category = await categoryList();
         $('#listCategoryLoader').remove();
         category.data.forEach(row => {
             $('#listCategory').append(`
-                <a href="">
+                <a class="category" id=${row.id}>
                     <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                         ${row.name}
                         <span class="badge badge-secondary badge-pill">${row.total}</span>
@@ -12,14 +20,6 @@ $(document).ready(async function () {
                 </a>
             `);
         });
-        
-        let query = {
-            "page": 1,
-            "limit": 8,
-            "search": "",
-            "filter": "",
-            "category": ""
-        }
 
         await fetchPackageList(query);
     } catch (error) {
@@ -92,17 +92,19 @@ $(document).ready(async function () {
     $('input[name="search"]').keydown(async function(e){
         const key = e.which;
         if (key === 13 || $(this).val() === '') {
-            let query = {
-                "page": 1,
-                "limit": 8,
-                "search": "",
-                "filter": "",
-                "category": ""
-            }
-            
             query.search = $(this).val() ? $(this).val() : '';
             fetchPackageList(query);
         }
+    })
+
+    $('.filter').change(async function(e) {
+        query.filter = $('.filter').val();
+        fetchPackageList(query);
+    })
+
+    $('.category').click(async function(e) {
+        query.category = this.id;
+        fetchPackageList(query);
     })
 })
 
@@ -140,4 +142,4 @@ const fetchPackageList = async query => {
     } catch (error) {
         console.log(error);
     }
-  }
+}
