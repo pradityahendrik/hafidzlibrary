@@ -9,7 +9,7 @@
                         span.spinner-border.spinner-border.text-pink.mx-auto.my-5#listCategoryLoader
             .col.md-9.py-2
                 //- search & filter
-                form
+                form#packageListForm
                 .row.py-2
                     .col-md-3
                         .form-group
@@ -20,10 +20,7 @@
                     .col-md-6                   
                         .form-group
                             .input-group
-                                input.form-control(type="text", placeholder="Pencarian")
-                                .input-group-append
-                                    button.btn.btn-outline-primary(type="button")
-                                        i.fa.fa-search  
+                                input.form-control(type="text", placeholder="Pencarian", name="search")
                     .col-md-3
                         ul.pagination.justify-content-end
                             li.page-item
@@ -42,6 +39,10 @@
                                     span.sr-only Next
                 //- list
                 .row.row-cols-1.row-cols-md-4.listPackage
+                    
                         
+.modal.fade.bd-example-modal-xl#detail
+  .modal-dialog.modal-xl
+    .modal-content#content
 
 script(src='/javascripts/category.js')  
