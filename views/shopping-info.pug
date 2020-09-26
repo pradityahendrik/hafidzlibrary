@@ -1,9 +1,75 @@
 .bg-light.text-black#shoppingInfo.py-5
     .container-fluid
-        .jumbotron
-            h1.display-4 Cara Order
-            p.lead Lorem ipsum dolor sit amet
-            hr.my-4
-            p lorem ipsum
-            p.lead
-                a.btn.btn-primary.btn-lg(href="") how
+        .row.text-center
+            .col-12
+                .heading
+                    h2.h1-responsive.font-weight-bold.my-5 Shopping Info
+        .row
+            .col
+                p.text-center
+                    | hafidzlibrary adalah Sebuah online store amanah yang menyediakan berbagai macam buku paket edukasi anak, mainan edukasi anak, serta buku-buku lainnya. 
+        .row
+            .col-4
+                #list-tab.list-group(role='tablist')
+                    a#list-pemesanan-list.list-group-item.list-group-item-action.active(data-toggle='list' href='#list-pemesanan' role='tab' aria-controls='pemesanan') PEMESANAN
+                    a#list-pembayaran-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-pembayaran' role='tab' aria-controls='pembayaran') CARA PEMBAYARAN 
+                    a#list-konfirmasi-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-konfirmasi' role='tab' aria-controls='konfirmasi') KONFIRMASI PEMBAYARAN
+                    a#list-pengiriman-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-pengiriman' role='tab' aria-controls='pengiriman') PENGIRIMAN
+            .col-8
+                #nav-tabContent.tab-content
+                    #list-pemesanan.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='list-pemesanan-list')
+                        .alert.alert-primary.text-center(role="alert")
+                            strong Pemesanan
+                        .alert.alert-light
+                            | 1. Pemesanan Cash
+                            hr
+                            | Silahkan Email atau Whatsapp dengan format sebagai berikut :
+                            br 
+                            br
+                            | Nama Lengkap – Alamat Lengkap (RT, RW, Kelurahan/Desa, Kabupaten/Kota, Provinsi, Kode Pos) – Email – No HP – Produk – Jumlah  
+                            br 
+                            br
+                            .alert.alert-warning
+                                | Contoh pemesanan cash: 
+                                br
+                                br
+                                | Putri Ayu – Villa Gading Harapan Gang Arjuna VI Blok AD6 No 16 Kel Kebalen Kec Babelan Bekasi Utara 17610  – putriayurimandarizky@gmail.com – 082299597436 – Halo Balita – 1 paket 
+                            br
+                            | 2. Pemesanan Arisan
+                            hr
+                            ul
+                                li Pemesanan produk secara arisan dapat memilih periode arisan 5 bulan dan 10 bulan. Khusus arisan periode 15 dan 20 bulan dapat diikuti untuk produk tertentu. 
+                                li Peserta arisan mengisikan data disini. Kami akan segera mengkonfirmasi setelah data formulir arisan terisi dengan benar. 
+                                li Jika sudah terkumpul 5 atau 10 peserta arisan, maka kami akan mengocok nama peserta arisan 1x di awal dengan aplikasi. 
+                                li Besarnya nominal arisan tergantung dari paket yang diorder oleh peserta (harga belum termasuk ongkir). 
+                                li Uang arisan wajib disetorkan paling lambat sesuai tanggal perjanjian setiap bulannya ke rekening kami.
+                                li Surat pemesanan produk akan dibuat apabila seluruh peserta arisan telah membayar uang arisan dalam setiap bulannya. 
+                                li Peserta berkewajiban untuk mematuhi dan melaksanakan peraturan arisan yang berlaku. 
+                                li Peserta arisan tidak diperkenankan mengundurkan diri selama periode arisannya belum selesai. Jika peserta arisan tidak melaksanakan kewajiban hingga periode arisan selesai dan sudah mendapat barang, maka barang yang sudah didapat wajib dikembalikan/akan ditarik kembali oleh kantor. Namun jika belum mendapatkan barang, peserta wajib mencari peserta pengganti dan uang arisan akan dikembalikan setelah periode arisan selesai. 
+                                li Peserta arisan boleh melunasi selama periode arisan berlangsung, akan tetapi Surat Pesanan produk diproses sesuai dengan hasil kocokan arisan. 
+                    #list-pembayaran.tab-pane.fade(role='tabpanel' aria-labelledby='list-pembayaran-list') 
+                        .alert.alert-primary.text-center(role="alert")
+                            strong Cara Pembayaran  
+                        .alert.alert-light
+                            | Setelah rincian pesanan dari Anda kami terima, selanjutnya Anda dapat melakukan pembayaran ke salah satu rekening bank kami : 
+                            br
+                            br
+                            ul 
+                                li Bank BCA
+                                li Bank Mandiri
+                    #list-konfirmasi.tab-pane.fade(role='tabpanel' aria-labelledby='list-konfirmasi-list')
+                        .alert.alert-primary.text-center(role="alert")
+                            strong Konfirmasi  
+                        .alert.alert-light
+                            | Setelah rincian pesanan dari Anda kami terima, selanjutnya Anda dapat melakukan pembayaran ke salah satu rekening bank kami : 
+                            br
+                            br
+                            | Konfirmasikan pembayaran Anda kepada kami melalui email atau Whatsapp dengan mengirimkan bukti transfer. Jika Anda tidak melakukan konfirmasi pembayaran, maka pemesanan dianggap tidak ada dan barang tidak akan dikirim. 
+                    #list-pengiriman.tab-pane.fade(role='tabpanel' aria-labelledby='list-pengiriman-list')
+                        .alert.alert-primary.text-center(role="alert")
+                            strong Pengiriman  
+                        .alert.alert-light
+                            | Setelah konfirmasi pembayaran dari Anda kami terima, selanjutnya barang yang dipesan akan kami siapkan dan kirimkan ke alamat Anda. Kami menggunakan ekspedisi terpercaya seperti TIKI, J&T, JNE, POS, maupun cargo lainnya. Pengiriman produk estimasi 1-2 minggu setelah Nomor Surat Pemesanan keluar, tergantung wilayah pengiriman dan ekspedisi. Biaya pengiriman dihitung berdasarkan berat per kilogram. Beberapa produk mendapat fasilitas gratis ongkir (tidak bisa memilih ekspedisi) maupun subsidi ongkir.  Silahkan dapat ditanyakan pada saat pemesanan. Selanjutnya nomor resi pengiriman akan kami infokan melalui email atau WhatsApp segera setelah pengiriman barang dilakukan. 
+
+
+script(src='/javascripts/shopping-info.js')  
