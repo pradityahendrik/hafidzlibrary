@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'hafidzlibrary' });
 });
 
+router.get('/admin', function(req, res, next) {
+  res.render('./admin/index', { title: 'hafidzlibrary CMS' });
+});
+
 module.exports = router;

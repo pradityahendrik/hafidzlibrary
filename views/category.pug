@@ -1,6 +1,6 @@
 .bg-light.text-black#category.py-5
     .container-fluid
-        .row.py-2
+        .row.py-3
             .col-md-3.py-2 
                 //- category
                 .card
@@ -11,35 +11,23 @@
                 //- search & filter
                 form#packageListForm
                 .row.py-2
-                    .col-md-4
+                    .col-md-3
                         .form-group
                             select.form-control.filter
                                 option(value="") Filter
                                 option(value="unggulan") Unggulan
                                 option(value="obral") Obral 
-                    .col-md-6                   
+                    .col-md-3                   
                         .form-group
                             .input-group
                                 input.form-control(type="text", placeholder="Pencarian", name="search")
                     .col-md-2
                         .btn.btn-info.disabled#clearFilter
                             | Bersihkan
-                    //- .col-md-3
-                        //- ul.pagination.justify-content-end
-                        //-     li.page-item
-                        //-         a.page-link(href="")
-                        //-             span &laquo;
-                        //-             span.sr-only Previous
-                        //-     li.page-item
-                        //-         a.page-link(href="") 1
-                        //-     li.page-item
-                        //-         a.page-link(href="") 2
-                        //-     li.page-item
-                        //-         a.page-link(href="") 3
-                        //-     li.page-item
-                        //-         a.page-link(href="")
-                        //-             span &raquo;
-                        //-             span.sr-only Next
+                    .col-md-1
+                    .col-md-3
+                        //- #page
+                        //-     ul.pagination
                 //- list
                 .row.row-cols-1.row-cols-md-4.listPackage
                     
