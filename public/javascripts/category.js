@@ -90,6 +90,7 @@ $(document).ready(async function () {
     });
 
     $('input[name="search"]').keydown(async function(e){
+        $('#clearFilter').removeClass('disabled')
         const key = e.which;
         if (key === 13 || $(this).val() === '') {
             query.search = $(this).val() ? $(this).val() : '';
@@ -98,12 +99,27 @@ $(document).ready(async function () {
     })
 
     $('.filter').change(async function(e) {
+        $('#clearFilter').removeClass('disabled')
         query.filter = $('.filter').val();
         fetchPackageList(query);
     })
 
     $('.category').click(async function(e) {
         query.category = this.id;
+        fetchPackageList(query);
+    })
+
+    $('#clearFilter').click(function (e) {
+        $('input[name="search"]').val('');
+        $('.filter').val('')
+        $('#clearFilter').addClass('disabled')
+        query = {
+            "page": 1,
+            "limit": 8,
+            "search": "",
+            "filter": "",
+            "category": ""
+        }
         fetchPackageList(query);
     })
 })

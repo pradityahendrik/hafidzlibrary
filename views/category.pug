@@ -11,7 +11,7 @@
                 //- search & filter
                 form#packageListForm
                 .row.py-2
-                    .col-md-3
+                    .col-md-4
                         .form-group
                             select.form-control.filter
                                 option(value="") Filter
@@ -21,22 +21,25 @@
                         .form-group
                             .input-group
                                 input.form-control(type="text", placeholder="Pencarian", name="search")
-                    .col-md-3
-                        ul.pagination.justify-content-end
-                            li.page-item
-                                a.page-link(href="")
-                                    span &laquo;
-                                    span.sr-only Previous
-                            li.page-item
-                                a.page-link(href="") 1
-                            li.page-item
-                                a.page-link(href="") 2
-                            li.page-item
-                                a.page-link(href="") 3
-                            li.page-item
-                                a.page-link(href="")
-                                    span &raquo;
-                                    span.sr-only Next
+                    .col-md-2
+                        .btn.btn-info.disabled#clearFilter
+                            | Clear
+                    //- .col-md-3
+                        //- ul.pagination.justify-content-end
+                        //-     li.page-item
+                        //-         a.page-link(href="")
+                        //-             span &laquo;
+                        //-             span.sr-only Previous
+                        //-     li.page-item
+                        //-         a.page-link(href="") 1
+                        //-     li.page-item
+                        //-         a.page-link(href="") 2
+                        //-     li.page-item
+                        //-         a.page-link(href="") 3
+                        //-     li.page-item
+                        //-         a.page-link(href="")
+                        //-             span &raquo;
+                        //-             span.sr-only Next
                 //- list
                 .row.row-cols-1.row-cols-md-4.listPackage
                     
