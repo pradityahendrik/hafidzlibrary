@@ -43,4 +43,13 @@ exports.getList = async (wheres) => {
     return result;
 }
 
+exports.getListCount = async (wheres) => {
+    let result = 
+        knex.select('*').table('Category')
+            .where('Name', 'LIKE', `%${wheres.search}%`)
+            .orderBy('Name', 'asc');
+
+    return result;
+}
+
 module.exports = exports;

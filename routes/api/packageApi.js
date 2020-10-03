@@ -1,6 +1,7 @@
 var express = require ('express');
 var router = express.Router();
 const method = require('../../methods/packageMethod');
+const passport = require('passport');
 
 router.get('/get-all', async (req, res, next) => {
   const result = await method.getAll();
@@ -10,11 +11,26 @@ router.get('/get-all', async (req, res, next) => {
 router.get('/get-byId/:id', async (req, res, next) => {
   const result = await method.getById(req.params.id);
   res.status(result.code).send(result.response);
-})
+});
 
 router.get('/get-list', async (req, res, next) => {
   const result = await method.getList(req);
   res.status(result.code).send(result.response);
-})
+});
   
+router.post('/add', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+  const result = await method.add(req);
+  res.status(result.code).send(result.response);
+});
+
+router.put('/update/:id', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+  const result = await method.update(req);
+  res.status(result.code).send(result.response);
+});
+
+router.get('/getlist', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+  const result = await method.getList(req);
+  res.status(result.code).send(result.response);
+});
+
 module.exports = router;

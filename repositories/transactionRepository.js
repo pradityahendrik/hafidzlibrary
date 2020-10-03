@@ -19,4 +19,39 @@ exports.getTransactionRandom = async () => {
     return result;
 };
 
+exports.add = async (data) => {
+    const result = await knex.table('Transaction').insert(data);
+    return result;
+}
+
+exports.update = async (data, id) => {
+    await knex('Transaction')
+        .where('Id', id)
+        .update(data);
+}
+
+exports.getById = async (id) => {
+    const result = await knex.select('*').from('Transaction').where('Id', id).first();
+    return result;
+}
+
+exports.getList = async (wheres) => {
+    let result = 
+        knex.select('*').table('Transaction')
+            .where('Testimony', 'LIKE', `%${wheres.search}%`)
+            .orderBy('Testimony', 'asc')
+            .limit(wheres.limit)
+            .offset(wheres.offset);
+
+    return result;
+}
+
+exports.getListCount = async (wheres) => {
+    let result = 
+        knex.select('*').table('Transaction')
+            .where('Testimony', 'LIKE', `%${wheres.search}%`)
+            .orderBy('Testimony', 'asc');
+
+    return result;
+}
 module.exports = exports;

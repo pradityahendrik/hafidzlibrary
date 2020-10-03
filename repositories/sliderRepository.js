@@ -40,4 +40,13 @@ exports.getList = async (wheres) => {
     return result;
 };
 
+exports.getListCount = async (wheres) => {
+    let result = 
+        knex.select('*').table('Slider')
+        .where('File', 'LIKE', `%${wheres.search}%`)
+        .orderBy('File', 'ASC');
+
+    return result;
+};
+
 module.exports = exports;

@@ -81,9 +81,9 @@ exports.getList = async (data) => { /** query: page, limit, search */
         wheres.offset = Helper.offsetPagination(meta.page, meta.limit);
 
         let list = await repo.getList(wheres);
-        const count = list.length;
+        const count = await repo.getListCount(wheres);
 
-        meta.total_data = count;
+        meta.total_data = count.length;
         meta.total_page = Math.ceil(meta.total_data / meta.limit);
 
         result = {

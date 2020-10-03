@@ -25,6 +25,6 @@ transformer.update = function (data, user) {
         UpdatedBy: user,
         UpdatedTime: new Date()
     }
-}
+};
 
 module.exports = transformer;
