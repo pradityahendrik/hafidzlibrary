@@ -1,5 +1,5 @@
 const knex = require('../configs/database');
-const { first, where } = require('../configs/database');
+const { first, where, count } = require('../configs/database');
 
 exports.findById = async (data) => {
     const result = await 
@@ -28,7 +28,7 @@ exports.findTagByPackageId = async (data) => {
 }
 
 exports.getList = async (wheres) => {
-    let result = 
+    let data = 
         knex.select('P.*').distinct().table('Package as P')
             .leftJoin('PackageTag as PT', 'P.Id', 'PT.PackageId')
             .where((qB) => 
@@ -42,7 +42,7 @@ exports.getList = async (wheres) => {
             .offset(wheres.offset);
 
     if (wheres.search == '' && wheres.filter == '' && wheres.category == '') {
-        result.andWhere((qB) => 
+        data.andWhere((qB) => 
             qB
                 .where('P.IsBest', '=', 1)
                 .orWhere('P.IsSale', '=', 1)
@@ -50,16 +50,49 @@ exports.getList = async (wheres) => {
     }
     if (wheres.filter !== '') {
         if (wheres.filter == 'unggulan') {
-            result.andWhere('P.IsBest', '=', 1);
+            data.andWhere('P.IsBest', '=', 1);
         } else {
-            result.andWhere('P.IsSale', '=', 1);
+            data.andWhere('P.IsSale', '=', 1);
         }
     }
     if (wheres.category !== '') {
-        result.andWhere('P.CategoryId', '=', wheres.category);
+        data.andWhere('P.CategoryId', '=', wheres.category);
     }
 
-    return result;
+    return data;
+}
+
+exports.getListCount = async (wheres) => {
+    let data = 
+        knex.select('P.*').distinct().table('Package as P')
+            .leftJoin('PackageTag as PT', 'P.Id', 'PT.PackageId')
+            .where((qB) => 
+                qB
+                    .where('P.Name', 'LIKE', `%${wheres.search}%`)
+                    .orWhere('P.Description', 'LIKE', `%${wheres.search}%`)
+                    .orWhere('PT.Name', 'LIKE', `%${wheres.search}%`)
+            )
+            .orderBy('P.Name', 'asc');
+
+    if (wheres.search == '' && wheres.filter == '' && wheres.category == '') {
+        data.andWhere((qB) => 
+            qB
+                .where('P.IsBest', '=', 1)
+                .orWhere('P.IsSale', '=', 1)
+        );
+    }
+    if (wheres.filter !== '') {
+        if (wheres.filter == 'unggulan') {
+            data.andWhere('P.IsBest', '=', 1);
+        } else {
+            data.andWhere('P.IsSale', '=', 1);
+        }
+    }
+    if (wheres.category !== '') {
+        data.andWhere('P.CategoryId', '=', wheres.category);
+    }
+
+    return data;    
 }
 
 exports.findAllPictures = async () => {
@@ -73,6 +106,22 @@ exports.findAllTags = async () => {
     const result = await 
         knex.select('Id as TagId', 'Name as TagName', 'PackageId')
             .from('PackageTag')
+    return result;
+}
+
+exports.add = async (data) => {
+    const result = await knex.table('Package').insert(data);
+    return result;
+}
+
+exports.update = async (data, id) => {
+    await knex('Package')
+        .where('Id', id)
+        .update(data);
+}
+
+exports.getById = async (id) => {
+    const result = await knex.select('*').from('Package').where('Id', id).first();
     return result;
 }
 

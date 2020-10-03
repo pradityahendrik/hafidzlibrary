@@ -3,6 +3,8 @@ const repository = require('../repositories/packageRepository');
 const transformer = require('../transformers/packageTransformer');
 const Helper = require('../utils/helpers/helper');
 const Promise = require('bluebird');
+const ErrorHandler = require('../utils/helpers/errorHandler');
+const validator = require('../utils/validators/packageValidator').packageValidator;
 
 exports.getAll = async () => {
     try {
@@ -51,8 +53,7 @@ exports.getList = async (data) => {
         wheres.offset = Helper.offsetPagination(meta.page, meta.limit);
 
         let list = await repository.getList(wheres);
-        const count = list.length;
-
+        let count = await repository.getListCount(wheres);
 
         /** get Tags & Pictures */
         let pictureList = await repository.findAllPictures();
@@ -80,7 +81,7 @@ exports.getList = async (data) => {
             return transformer.list(list);
         });
 
-        meta.total_data = count;
+        meta.total_data = count.length;
         meta.total_page = Math.ceil(meta.total_data / meta.limit);
 
         const result = {
@@ -88,6 +89,39 @@ exports.getList = async (data) => {
             meta
         };
         return Result.response(200, 'Berhasil', result);
+    } catch (error) {
+        return Result.response(error.code, error.message);
+    }
+}
+
+exports.add = async (data) => {
+    try {
+        await validator.add(data.body).catch((err) => {
+            throw ErrorHandler.response(400, err.details[0].message)
+        });
+
+        const dataInsert = transformer.add(data.body, data.user.Username);
+
+        await repository.add(dataInsert).catch((err) => {
+            throw ErrorHandler.response(400, err.sqlMessage)
+        });
+        return Result.response(200, 'Berhasil menyimpan data paket');
+    } catch (error) {
+        return Result.response(error.code, error.message);
+    }
+}
+
+exports.update = async (data) => {
+    try {
+        await validator.update(data.body).catch((err) => {
+            throw ErrorHandler.response(400, err.details[0].message);
+        });
+
+        const dataUpdate = transformer.update(data.body, data.user.Username);
+        await repository.update(dataUpdate, data.params.id);
+
+        const dataUpdated = await repository.getById(data.params.id);
+        return Result.response(200, 'Data berhasil diubah', dataUpdated);
     } catch (error) {
         return Result.response(error.code, error.message);
     }

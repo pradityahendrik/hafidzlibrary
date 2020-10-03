@@ -40,4 +40,31 @@ transformer.list = function (package) {
     }
 };
 
+transformer.add = function (data, user) {
+    return {
+        Name: data.name,
+        Description: data.description,
+        Price: data.price,
+        IsBest: data.isbest,
+        IsSale: data.issale,
+        SalePrice: data.saleprice,
+        CategoryId: data.categoryid,
+        CreatedBy: user
+    }
+};
+
+transformer.update = function (data, user) {
+    return {
+        Name: data.name,
+        Description: data.description,
+        Price: data.price,
+        IsBest: data.isbest,
+        IsSale: data.issale,
+        SalePrice: data.saleprice,
+        CategoryId: data.categoryid,
+        UpdatedBy: user,
+        UpdatedTime: new Date()
+    }
+};
+
 module.exports = transformer;
