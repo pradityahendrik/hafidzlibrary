@@ -10,9 +10,9 @@ block content
           p Please enter your email and password
         form#login
           .form-group
-            input.form-control(name="username" type='text', placeholder='Username')
+            input.form-control(name="username" type='text', placeholder='Username', required)
           .form-group
-            input.form-control(name="password" type='password', placeholder='Password')
+            input.form-control(name="password" type='password', placeholder='Password', required)
           .forgot
             a(href='#') Forgot password?
           button.btn.btn-primary#loginBtn(type='submit') Login
