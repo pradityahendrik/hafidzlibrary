@@ -10,6 +10,34 @@ var indexRouter = require('./routes/web/index');
 
 // Routes for API
 var indexApiRouter = require('./routes/api/index');
+var categoryApiRouter = require('./routes/api/categoryApi');
+var packageApiRouter = require('./routes/api/packageApi');
+var sliderApiRouter = require('./routes/api/sliderApi');
+var transactionApiRouter = require('./routes/api/transactionApi');
+var faqApiRouter = require('./routes/api/faqApi');
+var userApiRouter = require('./routes/api/userApi');
+
+/** passport authentication, jwt */
+const passport = require('passport');
+const passportJWT = require("passport-jwt");
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+const jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = 'secret';
+const userRepo = require('./repositories/userRepository');
+
+var strategy = new JwtStrategy(jwtOptions, async(jwt_payload, next) => {
+    const user = await userRepo.getUser(jwt_payload.username);
+    if (user) {
+      next(null, user);
+    } else {
+      next(null, false);
+    }
+}); 
+
+passport.use(strategy);
+/** done for passport authentication, jwt  */
 
 var app = express();
 
@@ -28,6 +56,12 @@ app.use('/', indexRouter);
 
 // API
 app.use('/api', indexApiRouter);
+app.use('/api/category', categoryApiRouter);
+app.use('/api/package', packageApiRouter);
+app.use('/api/slider', sliderApiRouter);
+app.use('/api/transaction', transactionApiRouter);
+app.use('/api/faq', faqApiRouter);
+app.use('/api/user', userApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
