@@ -1,6 +1,6 @@
 ---
 deployment:
  tasks:
- - export DEPLOYPATH=/home/u5464279/public_html/
+ - export DEPLOYPATH=/home/u5464279/public_html/hafidzlibrary/
  - /bin/cp index.html $DEPLOYPATH
  - /bin/cp style.css $DEPLOYPATH
