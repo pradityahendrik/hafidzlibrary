@@ -1,7 +1,7 @@
 $(document).ready(async function () {
     let query = {
         "page": 1,
-        "limit": 8,
+        // "limit": 8,
         "search": "",
         "filter": "",
         "category": ""
@@ -56,10 +56,7 @@ $(document).ready(async function () {
                     <br/>
                     <div class="alert alert-warning" role="alert">
                         <strong> Kategori </strong>
-                        <span>${detail.data.categoryId}</span>
-                        <br/>
-                        <strong> Tag </strong>
-                        <span>${detail.data.tag}</span>
+                        <span>${detail.data.categoryName}</span>
                     </div>
                     <div class="alert alert-light" role="alert">
                         <strong> Deskripsi </strong>
@@ -68,7 +65,7 @@ $(document).ready(async function () {
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a type="button" class="btn btn-success btn-lg" href="https://api.whatsapp.com/send?phone=6285711223674&text=hai%20saya%20mau%20beli%20paket%20buku%20${detail.data.name}", target="_blank">
+                    <a type="button" class="btn btn-success btn-lg" href="https://api.whatsapp.com/send?phone=6282299597436&text=hai%20saya%20mau%20beli%20paket%20buku%20${detail.data.name}", target="_blank">
                         <i class="fa fa-whatsapp"></i>
                         Chat via WhatsApp
                     </a>
@@ -78,7 +75,7 @@ $(document).ready(async function () {
             detail.data.picture.forEach((row) => {
                 $('#detail-slider').append(`
                     <div class="carousel-item ${(row.Sequence === 1) ? 'active' : ''}">
-                        <img src=${row.PictureName} class="d-block w-100 h-50" alt=${row.Id}>
+                        <img src="images/packages/${this.id}/${row.PictureName}" class="d-block w-100 h-50" alt=${row.Id}>
                     </div>
                 `);
             });
@@ -115,7 +112,7 @@ $(document).ready(async function () {
         $('#clearFilter').addClass('disabled')
         query = {
             "page": 1,
-            "limit": 8,
+            // "limit": 8,
             "search": "",
             "filter": "",
             "category": ""
@@ -134,7 +131,7 @@ const fetchPackageList = async query => {
                         ${(row.isBest === 1) ? '<span class="best-seller-badge">Unggulan</span>' : ''}
                         ${(row.isSale === 1) ? '<span class="sale-badge">Obral</span>' : ''}
                         <div class="card">
-                            <img class="img-fluid img-thumbnail card-img-top" src="images/card-book.png" alt="" />
+                            <img class="img-fluid img-thumbnail card-img-top" src="images/packages/${row.id}/${row.pictures[0].PictureName}" alt="" />
                             <div class="card-body">
                                 <h5 class="card-title text-center">${row.name}</h5>
                             </div>
