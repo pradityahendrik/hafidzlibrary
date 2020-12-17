@@ -57,3 +57,12 @@ const getTestimoni = async () => {
     error: err => err,
   });
 };
+
+const getTrx = async () => {
+  return await $.ajax({
+    method: 'GET',
+    url: `${endpoint}/api/transaction/get-transactionRandom`,
+    success: res => res,
+    error: err => err,
+  });
+};
