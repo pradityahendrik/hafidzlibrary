@@ -4,7 +4,8 @@ exports.findAllTestimony = async () => {
     const result = await
         knex.select('T.*', 'P.Name as PackageName')
             .from('Transaction as T')
-            .join('Package as P', 'P.Id', 'T.PackageId');
+            .join('Package as P', 'P.Id', 'T.PackageId')
+            .whereNotNull('Testimony');
     return result;
 };
 
