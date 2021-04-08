@@ -25,3 +25,17 @@ const me = async () => {
     error: err => err,
   });
 }
+
+const listCategory = async (data) => {
+  return await $.ajax({
+    method: 'GET',
+    url: `${endpoint}/api/category/getlist`,
+    data,
+    beforeSend: function(req) {
+      const token = localStorage.getItem('token');
+      req.setRequestHeader("Authorization", `Bearer ${token}`);
+    },
+    success: res => res,
+    error: err => err,
+  });
+}
