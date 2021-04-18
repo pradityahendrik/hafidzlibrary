@@ -5,13 +5,16 @@ block content
     .row
       .col-3
         #list-tab.list-group(role='tablist')
-          a#list-pemesanan-list.list-group-item.list-group-item-action.active(data-toggle='list' href='#list-pemesanan' role='tab' aria-controls='pemesanan') Kategori
-          a#list-pembayaran-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-pembayaran' role='tab' aria-controls='pembayaran') FAQ
+          a#list-kategori-list.list-group-item.list-group-item-action.active(data-toggle='list' href='#list-kategori' role='tab' aria-controls='kategori') Kategori
+          a#list-faq-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-faq' role='tab' aria-controls='faq') FAQ
+          a#list-slider-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-slider' role='tab' aria-controls='slider') Slider
       .col-8
         #nav-tabContent.tab-content
-          #list-pemesanan.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='list-pemesanan-list') 
+          #list-kategori.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='list-kategori-list') 
             include category.pug
-          #list-pembayaran.tab-pane.fade(role='tabpanel' aria-labelledby='list-pembayaran-list')
+          #list-faq.tab-pane.fade(role='tabpanel' aria-labelledby='list-faq-list')
             include faq.pug
+          #list-slider.tab-pane.fade(role='tabpanel' aria-labelledby='list-slider-list')
+            include slider.pug
 
   script(src='/javascripts/admin/admin.js')  
