@@ -59,14 +59,15 @@ exports.delete = async (data) => {
 exports.getList = async (data) => { /** query: page, limit, search  */
     try {
         let wheres = {
-            limit: data.query.limit,
-            search: data.query.search
+            page: data.query.page || 1,
+            limit: data.query.limit || 10,
         }
 
+        if (data.query.search) wheres.search = data.query.search;
+
         let meta = {
-            page: data.query.page,
-            limit: data.query.limit,
-            search: data.query.search
+            page: wheres.page,
+            limit: wheres.limit,
         }
 
         wheres.offset = Helper.offsetPagination(meta.page, meta.limit);
@@ -74,7 +75,7 @@ exports.getList = async (data) => { /** query: page, limit, search  */
         let list = await repository.getList(wheres);
         let listCount = await repository.getListCount(wheres);
 
-        meta.total_data = listCount.length;
+        meta.total_data = listCount.length - 1;
         meta.total_page = Math.ceil(meta.total_data / meta.limit);
 
         const result = {

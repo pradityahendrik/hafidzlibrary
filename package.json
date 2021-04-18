@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "admin-lte": "^3.1.0-rc",
     "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
     "cookie-parser": "~1.4.4",
