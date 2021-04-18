@@ -1,7 +1,20 @@
 extends layout
 
 block content
-  .container
-    | Login
+  .container-fluid
+    .row
+      .col-3
+        #list-tab.list-group(role='tablist')
+          a#list-kategori-list.list-group-item.list-group-item-action.active(data-toggle='list' href='#list-kategori' role='tab' aria-controls='kategori') Kategori
+          a#list-faq-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-faq' role='tab' aria-controls='faq') FAQ
+          a#list-slider-list.list-group-item.list-group-item-action(data-toggle='list' href='#list-slider' role='tab' aria-controls='slider') Slider
+      .col-8
+        #nav-tabContent.tab-content
+          #list-kategori.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='list-kategori-list') 
+            include category.pug
+          #list-faq.tab-pane.fade(role='tabpanel' aria-labelledby='list-faq-list')
+            include faq.pug
+          #list-slider.tab-pane.fade(role='tabpanel' aria-labelledby='list-slider-list')
+            include slider.pug
 
   script(src='/javascripts/admin/admin.js')  

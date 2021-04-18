@@ -4,7 +4,7 @@ $(document).ready(async function () {
         images.data.forEach(row => {
             $('#homeSlider').append(`
                 <div class="carousel-item ${(row.IsHighlight === 1) ? 'active' : ''}">
-                    <img class="d-block w-100" src='${row.File}' alt=${row.Id}/> 
+                    <img class="d-block w-100" src='images/sliders/${row.File}' alt=${row.Id}/> 
                 </div>
             `);
         });

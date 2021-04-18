@@ -35,20 +35,20 @@ exports.delete = async (id) => {
 exports.getList = async (wheres) => {
     let result = 
         knex.select('*').table('Category')
-            .where('Name', 'LIKE', `%${wheres.search}%`)
-            .orderBy('Name', 'asc')
             .limit(wheres.limit)
             .offset(wheres.offset);
-
+    if (wheres.search) {
+       result.where('Name', 'LIKE', `%${wheres.search}%`);
+    }
     return result;
 }
 
 exports.getListCount = async (wheres) => {
     let result = 
         knex.select('*').table('Category')
-            .where('Name', 'LIKE', `%${wheres.search}%`)
-            .orderBy('Name', 'asc');
-
+    if (wheres.search) {
+        result.where('Name', 'LIKE', `%${wheres.search}%`);
+    }
     return result;
 }
 
